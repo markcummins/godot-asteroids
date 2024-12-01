@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpboh27jtbet0"]
+[gd_scene load_steps=13 format=3 uid="uid://cpboh27jtbet0"]
 
 [ext_resource type="Script" path="res://Scripts/player-movement.gd" id="1_aw4s7"]
 [ext_resource type="Texture2D" uid="uid://dmlacxyhcyd8q" path="res://Assets/Player.png" id="1_icii2"]
 [ext_resource type="PackedScene" uid="uid://byx1bg88idwtn" path="res://Scenes/screen-bounds-movement.tscn" id="3_ltiod"]
 [ext_resource type="Script" path="res://Scripts/player-shooting.gd" id="4_gd656"]
 [ext_resource type="PackedScene" uid="uid://bnpm5ikurrupu" path="res://Scenes/bullet-player.tscn" id="5_34tpb"]
+[ext_resource type="Script" path="res://Scripts/power_weapons.gd" id="6_6xryf"]
 [ext_resource type="Texture2D" uid="uid://ddw6s7idt6s0b" path="res://Assets/EngineThrottle.png" id="6_kpyn3"]
 [ext_resource type="AudioStream" uid="uid://bmyeql0nsgr0k" path="res://Assets/sounds/engine.ogg" id="8_56005"]
 [ext_resource type="PackedScene" uid="uid://fvori075tth4" path="res://Scenes/explosion-particles.tscn" id="8_b5afe"]
@@ -65,6 +66,11 @@ node = NodePath("..")
 [node name="ShootingPoint" type="Node2D" parent="."]
 position = Vector2(0, 32)
 script = ExtResource("4_gd656")
+bullet_scene = ExtResource("5_34tpb")
+
+[node name="PowerWeapons" type="Node2D" parent="."]
+position = Vector2(0, 32)
+script = ExtResource("6_6xryf")
 bullet_scene = ExtResource("5_34tpb")
 
 [node name="BlinkingTimer" type="Timer" parent="."]

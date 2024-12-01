@@ -4,7 +4,7 @@ const ASSETS_LIVES = preload("res://Assets/Lives.png")
 const ASSETS_PLAYER = preload("res://Assets/Player.png")
 
 @onready var lives_container: HBoxContainer = $Timer/MarginContainer/LivesContainer
-@onready var lives_manager: LivesManager = $"../LivesManager"
+@onready var lives_manager: LivesManager = $"../Managers/LivesManager"
 
 @onready var game_over_timer: Timer = $Timer
 @onready var game_over_label: Label = $Timer/MarginContainer/CenterContainer/GameOverLabel
@@ -12,8 +12,11 @@ const ASSETS_PLAYER = preload("res://Assets/Player.png")
 @onready var totalLives: int
 @onready var game_over_timer_instance: int = 0
 
-@onready var score_manager: ScoreManager = $"/root/main/ScoreManager"
+@onready var score_manager: ScoreManager = $"/root/main/Managers/ScoreManager"
 @onready var points_label: Label = $Timer/MarginContainer/LabelContainer/PointsLabel
+
+@onready var power_up_manager: PowerUpManager = $"/root/main/Managers/PowerUpManager"
+@onready var power_up_label: Label = $Timer/MarginContainer/LabelContainer/PowerUpLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,11 +25,16 @@ func _ready() -> void:
 	var lives = lives_manager.lives
 	draw_lives(lives)
 	
-	score_manager.score_updated.connect(update_score)
 	lives_manager.player_life_lost.connect(life_lost)
 	
-func update_score(score):
+	score_manager.score_updated.connect(update_label_score)
+	power_up_manager.updated_power_up.connect(update_label_power_up)
+	
+func update_label_score(score):
 	points_label.text = str(score)
+	
+func update_label_power_up(power_up):
+	power_up_label.text = str(power_up)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func life_lost(lives_left) -> void:

@@ -50,6 +50,7 @@ superpower={
 2d_physics/layer_3="asteroid"
 2d_physics/layer_4="ufo"
 2d_physics/layer_5="ufo-bullet"
+2d_physics/layer_6="power-up"
 
 [rendering]
 

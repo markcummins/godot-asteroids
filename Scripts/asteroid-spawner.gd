@@ -5,7 +5,7 @@ class_name AsteroidSpawner
 @export var asteroid_scene: PackedScene
 @export var count = 6
 
-@onready var explosion_audio_player: AudioStreamPlayer2D = $"../ExplosionAudioPlayer"
+@onready var explosion_audio_player: AudioStreamPlayer2D = $"../../ExplosionAudioPlayer"
 
 const Utils = preload("res://Scripts/Utils/utils.gd")
 

@@ -6,7 +6,7 @@ extends Node
 @onready var top_path: PathFollow2D = $PathTopLeftRight/PathToFollow
 @onready var bottom_path: PathFollow2D = $PathBottomRightLeft/PathToFollow
 
-@onready var explosion_audio_player: AudioStreamPlayer2D = $"../ExplosionAudioPlayer"
+@onready var explosion_audio_player: AudioStreamPlayer2D = $"../../ExplosionAudioPlayer"
 
 func _ready():
 	timer.timeout.connect(spawn_ufo)

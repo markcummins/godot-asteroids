@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwkjt08ajhet4"]
+[gd_scene load_steps=10 format=3 uid="uid://bwkjt08ajhet4"]
 
 [ext_resource type="PackedScene" uid="uid://cpboh27jtbet0" path="res://Scenes/player.tscn" id="1_sg020"]
 [ext_resource type="PackedScene" uid="uid://cklylscly1yo3" path="res://Scenes/asteroid-spawner.tscn" id="2_kyddt"]
 [ext_resource type="PackedScene" uid="uid://fd1yriwv7cqb" path="res://Scenes/ufo-spawner.tscn" id="3_3q8jc"]
 [ext_resource type="Script" path="res://Scripts/score-manager.gd" id="4_dsco7"]
+[ext_resource type="PackedScene" uid="uid://bnctk46jbsebh" path="res://Scenes/power_up_spawner.tscn" id="4_lswg7"]
 [ext_resource type="Script" path="res://Scripts/lives_manager.gd" id="4_nh5v8"]
 [ext_resource type="AudioStream" uid="uid://dvti20qcyj8sl" path="res://Assets/sounds/explosion.ogg" id="5_bc7be"]
 [ext_resource type="PackedScene" uid="uid://des6l3jk04xqf" path="res://Scenes/ui.tscn" id="6_hw3br"]
+[ext_resource type="Script" path="res://Scripts/power_up_manager.gd" id="7_l258e"]
 
 [node name="main" type="Node2D"]
 
@@ -15,15 +17,24 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="Firefly" parent="." instance=ExtResource("1_sg020")]
 
-[node name="AsteroidSpawner" parent="." instance=ExtResource("2_kyddt")]
+[node name="Spawners" type="Node" parent="."]
 
-[node name="UfoSpawner" parent="." instance=ExtResource("3_3q8jc")]
+[node name="AsteroidSpawner" parent="Spawners" instance=ExtResource("2_kyddt")]
 
-[node name="ScoreManager" type="Node" parent="."]
+[node name="UfoSpawner" parent="Spawners" instance=ExtResource("3_3q8jc")]
+
+[node name="PowerUpSpawner" parent="Spawners" instance=ExtResource("4_lswg7")]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="LivesManager" type="Node" parent="Managers"]
+script = ExtResource("4_nh5v8")
+
+[node name="ScoreManager" type="Node" parent="Managers"]
 script = ExtResource("4_dsco7")
 
-[node name="LivesManager" type="Node" parent="."]
-script = ExtResource("4_nh5v8")
+[node name="PowerUpManager" type="Node" parent="Managers"]
+script = ExtResource("7_l258e")
 
 [node name="ExplosionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_bc7be")

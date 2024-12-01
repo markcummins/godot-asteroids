@@ -9,7 +9,7 @@ const player_start_position = Vector2(0,0)
 @export var lives = 3
 
 const PLAYER_SCENE = preload("res://Scenes/player.tscn")
-@onready var player: Player = $"../Firefly" as Player
+@onready var player: Player = $"../../Firefly" as Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

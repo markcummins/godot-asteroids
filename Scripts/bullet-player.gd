@@ -4,7 +4,7 @@ class_name BulletPlayer
 
 const Utils = preload("res://Scripts/Utils/utils.gd")
 
-@onready var score_manager: ScoreManager = $"/root/main/ScoreManager"
+@onready var score_manager: ScoreManager = $"/root/main/Managers/ScoreManager"
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Asteroid:

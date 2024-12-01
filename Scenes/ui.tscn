@@ -28,6 +28,19 @@ theme_override_fonts/font = ExtResource("1_5ltbe")
 theme_override_font_sizes/font_size = 20
 text = "0"
 
+[node name="Divider" type="Label" parent="Timer/MarginContainer/LabelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_5ltbe")
+theme_override_font_sizes/font_size = 20
+text = " | "
+
+[node name="PowerUpLabel" type="Label" parent="Timer/MarginContainer/LabelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_5ltbe")
+theme_override_font_sizes/font_size = 20
+
 [node name="LivesContainer" type="HBoxContainer" parent="Timer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
