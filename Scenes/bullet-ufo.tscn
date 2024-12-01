@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://gj5pubw73iq2"]
+
+[ext_resource type="Script" path="res://Scripts/bullet-ufo.gd" id="1_2qwl3"]
+[ext_resource type="Texture2D" uid="uid://bjoshh2w31qhm" path="res://Assets/Square.png" id="2_yfrfn"]
+[ext_resource type="AudioStream" uid="uid://dxjnp1o2qnfee" path="res://Assets/sounds/ufo_shot.ogg" id="3_csm7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvbng"]
+size = Vector2(4, 4)
+
+[node name="BulletUfo" type="Area2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_2qwl3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yfrfn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nvbng")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioShoot" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -26)
+rotation = -3.14159
+stream = ExtResource("3_csm7a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

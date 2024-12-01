@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnpm5ikurrupu"]
+
+[ext_resource type="Script" path="res://Scripts/bullet-player.gd" id="1_5fpw5"]
+[ext_resource type="Texture2D" uid="uid://bjoshh2w31qhm" path="res://Assets/Square.png" id="2_ypweu"]
+[ext_resource type="AudioStream" uid="uid://b6k5xpyhfmvq6" path="res://Assets/sounds/player_shot.ogg" id="3_epnub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvbng"]
+size = Vector2(4, 4)
+
+[node name="BulletPlayer" type="Area2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_5fpw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ypweu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nvbng")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioShoot" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -26)
+rotation = -3.14159
+stream = ExtResource("3_epnub")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
